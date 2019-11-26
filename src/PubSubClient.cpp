@@ -454,7 +454,7 @@ boolean PubSubClient::publish_P(const char* topic, const uint8_t* payload, unsig
     rc += _client->write(buffer,pos);
 
     for (i=0;i<plength;i++) {
-        rc += _client->write((char)pgm_read_byte_near(payload + i));
+        rc += _client->write(payload, plength);
     }
 
     lastOutActivity = millis();
